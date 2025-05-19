@@ -1,9 +1,26 @@
 <!-- index.php -->
+<?php
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+?>
+
 <?php include('header.php'); ?>
 
 <main>
-    <h2>Page d'Accueil</h2>
-    <p>Bienvenue sur la page d'accueil de mon site web.</p>
+    <?php
+    switch($page) {
+        case 'home':
+            include('home.php');
+            break;
+        case 'blog':
+            include('blog.php');
+            break;
+        case 'contact':
+            include('contact.php');
+            break;
+        default:
+            include('404.php');
+    }
+    ?>
 </main>
 
 <?php include('footer.php'); ?>
