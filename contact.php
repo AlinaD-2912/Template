@@ -1,19 +1,19 @@
-<?php
-include('header.php'); 
-?>
+<h1>Contactez-moi</h1>
+<form action="">
 
-<main class="container my-5">
-    <?php
-    if ($page == 'hobby') {
-        include 'hobby.php';
-    } elseif ($page == 'contact') {
-        include 'contact.php';
-    } else {
-        include '404.php';
-    }
-    ?>
-</main>
+    <label for="civilite">Choissisez votre civilité</label><br>
+    <select name="civilite" id="civilite">
+        <option value="madame">Madame</option>
+        <option value="monsieur">Monsieur</option>
+        <option value="rein">aucune de ces options</option>
+    </select>
+    <br>
+    <label for="nom">Preccisez votre nom</label><br>
+    <input type="text" id="nom" name="nom"><br>
 
-<?php
-include('footer.php'); 
-?>
+    <label for="prenom">Preccisez votre prénom</label><br>
+    <input type="text" id="prenom" name="prenom"><br>
+
+    
+
+</form>
