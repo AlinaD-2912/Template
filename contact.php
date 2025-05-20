@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <input type="radio" id="hr" name="raison"/>
+            <input type="radio" id="hr" name="raison" />
             <label for="hr">Human Resources manager</label>
         </div>
 
@@ -39,7 +39,46 @@
     <label for="message">Vous pouvez ajouter la commentaire</label><br>
     <textarea name="message" id="message"></textarea>
     <br>
-    
+
     <input type="submit" value="Envoyer" />
 
 </form>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $nomErr = $prenomErr = $emailErr = $raisonErr = $messageErr = '';
+
+    $civilite = htmlspecialchars($_POST['civilite']);
+    $email = htmlentities(trim($_POST['email']));
+    $raison = $_POST['raison'];
+    
+
+    if (empty($_POST["nom"])) {
+        $nomErr = "Nom est requis";
+    } else {
+        $nom = htmlentities(trim($_POST['nom']));
+    }
+
+    if (empty($_POST["prenom"])) {
+        $prenomErr = "Prenom est requis";
+    } else {
+        $prenom = htmlentities(trim($_POST['nom']));
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Format d'e-mail invalide";
+    }
+
+    if (empty($_POST["raison"])) {
+        $raisonErr = "Raison est requis";
+    } else {
+        $raison = $_POST["gender"];
+    }
+    if(strlen($message) < 5)
+    {
+        $messageErr = "Le message doit contenir au moins 5 caractères";
+    }else{
+        $message = htmlentities(trim($_POST['message']));
+    }
+}
