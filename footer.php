@@ -1,6 +1,6 @@
 <!-- footer.php -->
 
-<div class="container-fluid bg-dark text-light mt-5">
+<div class="container-fluid bg-dark text-light mt-5 position-fixed bottom-0">
     <footer class="py-4">
         <ul class="nav justify-content-center border-bottom border-secondary pb-3 mb-3">
             <li class="nav-item"><a href="index.php?page=home" class="nav-link px-2 text-light">Home</a></li>

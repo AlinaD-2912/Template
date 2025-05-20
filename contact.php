@@ -1,3 +1,4 @@
+<main class="container my-5">
 <h1>Contactez-moi</h1>
 <form action="index.php?page=contact" method="post">
 
@@ -43,7 +44,7 @@
     <input type="submit" value="Envoyer" />
 
 </form>
-
+</main>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

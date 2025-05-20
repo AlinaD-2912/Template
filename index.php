@@ -18,20 +18,18 @@ if ($page == 'hobby') {
 
 include('header.php');
 ?>
-
-<main class="container my-5">
     <?php
     if ($page == 'hobby') {
         include 'hobby.php';
     } elseif ($page == 'contact') {
         include 'contact.php';
-    } elseif ($page == 'blog') {
-        include 'blog.php';
+    } elseif ($page == 'home') {
+        include 'index.php';
     } else {
         include '404.php';
     }
     ?>
-</main>
+
 
 <?php include('footer.php'); ?>
 
