@@ -1,5 +1,5 @@
 <h1>Contactez-moi</h1>
-<form action="">
+<form action="index.php?page=contact" method="post">
 
     <label for="civilite">Choissisez votre civilité</label><br>
     <select name="civilite" id="civilite">
@@ -38,6 +38,8 @@
 
     <label for="message">Vous pouvez ajouter la commentaire</label><br>
     <textarea name="message" id="message"></textarea>
+    <br>
     
+    <input type="submit" value="Envoyer" />
 
 </form>
