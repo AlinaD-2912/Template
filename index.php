@@ -1,24 +1,33 @@
 <!-- index.php -->
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+
+$page = isset($_GET['page']) ? $_GET['page'] : 'hobby';
+
+// Set title and meta manually
+if ($page == 'hobby') {
+    $page_title = 'Mes loisirs - Mon site';
+    $page_meta = 'Découvrez mes hobbies préférés.';
+} elseif ($page == 'blog') {
+    $page_title = 'Blog - Mon site';
+    $page_meta = 'Lisez mes derniers articles.';
+} else {
+    $page_title = 'Page introuvable - Mon site';
+    $page_meta = 'La page demandée n’existe pas.';
+}
+
+include('header.php'); 
+
 ?>
 
-<?php include('header.php'); ?>
-
-<main>
+<main class="container my-5">
     <?php
-    switch($page) {
-        case 'home':
-            include('home.php');
-            break;
-        case 'blog':
-            include('blog.php');
-            break;
-        case 'contact':
-            include('contact.php');
-            break;
-        default:
-            include('404.php');
+    if ($page == 'hobby') {
+        include 'hobby.php';
+    } elseif ($page == 'contact') {
+        include 'contact.php';
+    } else {
+        include '404.php';
     }
     ?>
 </main>
