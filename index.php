@@ -18,7 +18,7 @@ if ($page == 'hobby') {
 
 include('header.php');
 ?>
-    <?php
+<?php
     if ($page == 'hobby') {
         include 'hobby.php';
     } elseif ($page == 'contact') {
@@ -28,7 +28,7 @@ include('header.php');
     } else {
         include '404.php';
     }
-    ?>
+?>
 
 
 <?php include('footer.php'); ?>
