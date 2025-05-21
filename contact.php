@@ -2,6 +2,7 @@
 <?php
 $page_title = 'Contact';
 $page_meta = 'Vous pouvez me contacter si vous avez rencontreé le probléme';
+include('header.php'); 
 
 $nomErr = $prenomErr = $emailErr = $raisonErr = $messageErr = '';
 $nom = $prenom = $email = $raison = $message = $civilite = '';
@@ -101,3 +102,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 </main>
+
+<?php include('footer.php'); ?>
