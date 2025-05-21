@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title><?= htmlspecialchars($page_title) ?></title>
-    <meta name="description" content="<?= htmlspecialchars($page_meta) ?>">
+    <title><?= $page_title ?? 'Titre par défaut' ?></title>
+    <meta name="description" content="<?= $page_meta ?? 'Description par défaut' ?>">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -34,3 +34,4 @@
             </div>
         </nav>
     </header>
+    <main>

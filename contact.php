@@ -1,4 +1,8 @@
+
 <?php
+$page_title = 'Contact';
+$page_meta = 'Vous pouvez me contacter si vous avez rencontreé le probléme';
+
 $nomErr = $prenomErr = $emailErr = $raisonErr = $messageErr = '';
 $nom = $prenom = $email = $raison = $message = $civilite = '';
 
