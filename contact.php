@@ -1,8 +1,7 @@
-
 <?php
 $page_title = 'Contact';
 $page_meta = 'Vous pouvez me contacter si vous avez rencontreé le probléme';
-include('header.php'); 
+include('header.php');
 
 $nomErr = $prenomErr = $emailErr = $raisonErr = $messageErr = '';
 $nom = $prenom = $email = $raison = $message = $civilite = '';
@@ -39,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messageErr = "Le message doit contenir au moins 5 caractères";
     }
 
-     if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
+    if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
         $data = "Civilité: $civilite\n";
         $data .= "Nom: $nom\n";
         $data .= "Prénom: $prenom\n";
@@ -62,45 +61,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="civilite">Choissisez votre civilité</label><br>
         <select name="civilite" id="civilite">
-            <option value="madame">Madame</option>
-            <option value="monsieur">Monsieur</option>
-            <option value="rein">aucune de ces options</option>
+            <option value="madame" <?= ($civilite === 'madame') ? 'selected' : '' ?>>Madame</option>
+            <option value="monsieur" <?= ($civilite === 'monsieur') ? 'selected' : '' ?>>Monsieur</option>
+            <option value="rein" <?= ($civilite === 'rein') ? 'selected' : '' ?>>aucune de ces options</option>
         </select>
         <br>
 
         <label for="nom">Précisez votre nom</label>
-        <span class="error">* <?php echo $nomErr; ?></span><br>
-        <input type="text" id="nom" name="nom"><br>
+        <span class="error">* <?= $nomErr; ?></span><br>
+        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($nom) ?>"><br>
 
         <label for="prenom">Précisez votre prénom</label>
-        <span class="error">* <?php echo $prenomErr; ?></span><br>
-        <input type="text" id="prenom" name="prenom"><br>
+        <span class="error">* <?= $prenomErr; ?></span><br>
+        <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($prenom) ?>"><br>
 
         <label for="email">Précisez votre email</label>
-        <span class="error">* <?php echo $emailErr; ?></span><br>
-        <input type="email" id="email" name="email"><br>
+        <span class="error">* <?= $emailErr; ?></span><br>
+        <input type="email" id="email" name="email" value="<?= htmlspecialchars($email) ?>"><br>
 
         <fieldset>
-            <legend>Choissisez votre raison de contact</legend>
-            <span class="error">* <?php echo $raisonErr; ?></span><br>
+            <legend>Choisissez votre raison de contact</legend>
+            <span class="error">* <?= $raisonErr; ?></span><br>
 
             <div>
-                <input type="radio" id="serviceInfo" name="raison" value="serviceInfo" />
+                <input type="radio" id="serviceInfo" name="raison" value="serviceInfo" <?= ($raison === 'serviceInfo') ? 'checked' : '' ?> />
                 <label for="serviceInfo">Service informatique</label>
             </div>
             <div>
-                <input type="radio" id="hr" name="raison" value="hr" />
+                <input type="radio" id="hr" name="raison" value="hr" <?= ($raison === 'hr') ? 'checked' : '' ?> />
                 <label for="hr">Human Resources manager</label>
             </div>
             <div>
-                <input type="radio" id="serviceTech" name="raison" value="serviceTech" />
+                <input type="radio" id="serviceTech" name="raison" value="serviceTech" <?= ($raison === 'serviceTech') ? 'checked' : '' ?> />
                 <label for="serviceTech">Service technique</label>
             </div>
         </fieldset>
 
+
         <label for="message">Donnez une courte explication de votre problème</label>
-        <span class="error">* <?php echo $messageErr; ?></span><br>
-        <textarea name="message" id="message"></textarea><br>
+        <span class="error">* <?= $messageErr; ?></span><br>
+        <textarea name="message" id="message"><?= htmlspecialchars($message) ?></textarea><br>
 
         <input type="submit" value="Envoyer" />
 
