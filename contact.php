@@ -39,15 +39,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messageErr = "Le message doit contenir au moins 5 caractères";
     }
 
-    $data = "Civilité: $civilite\n";
-    $data .= "Nom: $nom\n";
-    $data .= "Prénom: $prenom\n";
-    $data .= "Email: $email\n";
-    $data .= "Raison: $raison\n";
-    $data .= "Message: $message\n";
-    $data .= "-----------------------------\n";
-    file_put_contents('fichier.txt', $data, FILE_APPEND);
-    echo "<p class='success'>Merci, votre message a été enregistré !</p>";
+     if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
+        $data = "Civilité: $civilite\n";
+        $data .= "Nom: $nom\n";
+        $data .= "Prénom: $prenom\n";
+        $data .= "Email: $email\n";
+        $data .= "Raison: $raison\n";
+        $data .= "Message: $message\n";
+        $data .= "-----------------------------\n";
+        file_put_contents('fichier.txt', $data, FILE_APPEND);
+        echo "<p class='success'>Merci, votre message a été enregistré !</p>";
+        // Optionally, reset variables here if you want to clear the form
+        $nom = $prenom = $email = $raison = $message = $civilite = '';
+    }
 }
 ?>
 
