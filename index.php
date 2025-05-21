@@ -1,5 +1,5 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : 'home'; // default page
+$page = isset($_GET['page']) ? $_GET['page'] : 'hobby'; // default page
 
 // Set title and meta
 if ($page == 'hobby') {
