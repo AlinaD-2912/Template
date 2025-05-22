@@ -6,7 +6,7 @@ Créer un site web dynamique en JavaScript, avec génération des éléments via
 - **Catalogue** : 
 - **Contact** : 
 ## Site en ligne
-[Accéder au site]([https://alinad-2912.github.io/StraySpawn-web-site/](http://php-template.great-site.net))
+[Accéder au site]([http://php-template.great-site.net])
 ## Technologies utilisées
 - PHP
 - CSS
