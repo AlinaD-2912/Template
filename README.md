@@ -15,3 +15,7 @@ Créer un site web dynamique en JavaScript, avec génération des éléments via
 Pour visualiser le site en ligne, cliquez simplement sur le lien ci-dessus. 
 Pour l’exécuter en local :
 ```bash
+git clone https://github.com/AlinaD-2912/Template.git
+cd Template.git
+à partir du répertoire Template, écrivez le code dans le terminal
+php -S localhost:8000
