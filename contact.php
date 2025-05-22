@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <main class="container my-5">
-    <h1>Contactez-moi</h1>
+    <h1>Contactez-nous</h1>
     <form action="index.php?page=contact" method="post">
 
         <label for="civilite">Choissisez votre civilité</label><br>
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" id="email" name="email" value="<?= htmlspecialchars($email) ?>"><br>
 
         <fieldset>
-            <legend>Choisissez votre raison de contact</legend>
+            <legend>En fonction du service dont vous avez besoin, choisissez-en un</legend>
             <span class="error">* <?= $raisonErr; ?></span><br>
 
             <div>
