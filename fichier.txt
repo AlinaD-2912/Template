@@ -1,7 +1,15 @@
 Civilité: madame
+<<<<<<< Updated upstream
 Nom: Dupont
 Prénom: Alina
 Email: dvornyk.alina2912@gmail.com
 Raison: serviceTech
 Message: yikyuk
+=======
+Nom: fhfg
+Prénom: hfgh
+Email: dvornyk.alina2912@gmail.com
+Raison: serviceInfo
+Message: fghgfh
+>>>>>>> Stashed changes
 -----------------------------
