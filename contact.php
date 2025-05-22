@@ -8,38 +8,31 @@ $nom = $prenom = $email = $raison = $message = $civilite = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $civilite = htmlspecialchars($_POST['civilite']);
-    $email = htmlentities(trim($_POST['email']));
-    $message = htmlentities(trim($_POST['message']));
+    $civilite = filter_input(INPUT_POST, 'civilite', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $raison = filter_input(INPUT_POST, 'raison', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if (empty($_POST["nom"])) {
+    if (!$nom) {
         $nomErr = "Nom est requis";
-    } else {
-        $nom = htmlentities(trim($_POST['nom']));
     }
 
-    if (empty($_POST["prenom"])) {
+    if (!$prenom) {
         $prenomErr = "Prénom est requis";
-    } else {
-        $prenom = htmlentities(trim($_POST['prenom']));
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Format d'e-mail invalide";
-    }else {
-        $email = htmlentities(trim($_POST["email"]));
     }
 
-    if (empty($_POST["raison"])) {
+    if (!$raison) {
         $raisonErr = "Raison est requise";
-    } else {
-        $raison = $_POST["raison"];
     }
 
-    if (empty($_POST["message"]) || strlen(trim($_POST["message"])) < 5) {
+    if (!$message || strlen(trim($message)) < 5) {
         $messageErr = "Le message doit contenir au moins 5 caractères";
-    }else { 
-        $message = htmlentities(trim($_POST["message"]));
     }
 
     if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
@@ -52,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data .= "-----------------------------\n";
         file_put_contents('fichier.txt', $data, FILE_APPEND);
         echo "<p class='success'>Merci, votre message a été enregistré !</p>";
-        // Optionally, reset variables here if you want to clear the form
         $nom = $prenom = $email = $raison = $message = $civilite = '';
     }
 }
@@ -60,6 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <?php
+// PLUS LOIN filter has var 
+
 // $page_title = 'Contact';
 // $page_meta = 'Vous pouvez me contacter si vous avez rencontreé le probléme';
 // include('header.php');
@@ -73,35 +67,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $email = htmlentities(trim($_POST['email']));
 //     $message = htmlentities(trim($_POST['message']));
 
-//     if (!filter_has_var(INPUT_GET, 'nom')) {
-//         $nomErr = "Nom est requis";
-//     } else {
-//         $nom = htmlentities(trim($_POST['nom']));
-//     }
+    // if (!filter_has_var(INPUT_POST, 'nom') || empty(trim($_POST["nom"]))) {
+    //     $nomErr = "Nom est requis";
+    // } else {
+    //     $nom = htmlentities(trim($_POST['nom']));
+    // }
 
-//     if (!filter_has_var(INPUT_GET, 'prenom')) {
-//         $prenomErr = "Prénom est requis";
-//     } else {
-//         $prenom = htmlentities(trim($_POST['prenom']));
-//     }
+    // if (!filter_has_var(INPUT_POST, 'prenom') || empty(trim($_POST["prenom"]))) {
+    //     $prenomErr = "Prénom est requis";
+    // } else {
+    //     $prenom = htmlentities(trim($_POST['prenom']));
+    // }
 
-//     if (!filter_has_var(INPUT_GET, 'email')) {
-//         echo "Email Not Found";
-//     } else {
-//         $email = htmlentities(trim($_POST["email"]));
-//     }
+    // if (!filter_has_var(INPUT_POST, 'email') || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    //     $emailErr = "Format d'e-mail invalide";
+    // } else {
+    //     $email = htmlentities(trim($_POST["email"]));
+    // }
 
-//     if (!filter_has_var(INPUT_GET, 'raison')) {
-//         $raisonErr = "Raison est requise";
-//     } else {
-//         $raison = $_POST["raison"];
-//     }
+    // if (!filter_has_var(INPUT_POST, 'raison') || empty(trim($_POST["raison"]))) {
+    //     $raisonErr = "Raison est requise";
+    // } else {
+    //     $raison = $_POST["raison"];
+    // }
 
-//     if (!filter_has_var(INPUT_GET, 'message') || strlen(trim($_POST["message"])) < 5) {
-//         $messageErr = "Le message doit contenir au moins 5 caractères";
-//     }else { 
-//         $message = htmlentities(trim($_POST["message"]));
-//     }
+    // if (!filter_has_var(INPUT_POST, 'message') || strlen(trim($_POST["message"])) < 5) {
+    //     $messageErr = "Le message doit contenir au moins 5 caractères";
+    // } else { 
+    //     $message = htmlentities(trim($_POST["message"]));
+    // }
 
 //      if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
 //         $data = "Civilité: $civilite\n";
@@ -119,6 +113,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // }
 ?>
 
+
+<?php
+// $page_title = 'Contact';
+// $page_meta = 'Vous pouvez me contacter si vous avez rencontreé le probléme';
+// include('header.php');
+
+// $nomErr = $prenomErr = $emailErr = $raisonErr = $messageErr = '';
+// $nom = $prenom = $email = $raison = $message = $civilite = '';
+
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+//     $civilite = filter_input(INPUT_POST, 'civilite', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+//     $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+//     $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+//     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+//     $raison = filter_input(INPUT_POST, 'raison', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+//     $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+//     if (!$nom) {
+//         $nomErr = "Nom est requis";
+//     }
+
+//     if (!$prenom) {
+//         $prenomErr = "Prénom est requis";
+//     }
+
+//     if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//         $emailErr = "Format d'e-mail invalide";
+//     }
+
+//     if (!$raison) {
+//         $raisonErr = "Raison est requise";
+//     }
+
+//     if (!$message || strlen(trim($message)) < 5) {
+//         $messageErr = "Le message doit contenir au moins 5 caractères";
+//     }
+
+//     if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
+//         $data = "Civilité: $civilite\n";
+//         $data .= "Nom: $nom\n";
+//         $data .= "Prénom: $prenom\n";
+//         $data .= "Email: $email\n";
+//         $data .= "Raison: $raison\n";
+//         $data .= "Message: $message\n";
+//         $data .= "-----------------------------\n";
+//         file_put_contents('fichier.txt', $data, FILE_APPEND);
+//         echo "<p class='success'>Merci, votre message a été enregistré !</p>";
+//         $nom = $prenom = $email = $raison = $message = $civilite = '';
+//     }
+// }
+?>
 
 <main class="container my-5">
     <h1>Contactez-nous</h1>
