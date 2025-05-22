@@ -1,7 +1,7 @@
 # Création d'un template                                
-**Template Php** est un site dynamique conçu en PHP, structuré autour d’un système de front controller. Il intègre un en-tête (header) et un pied de page (footer) séparés, réutilisables sur toutes les pages grâce à include. Le site utilise la manipulation d’URL pour charger dynamiquement les contenus, et les données saisies dans un formulaire sont enregistrées dans un fichier .txt.
+**Template Php** 
 ## Objectif du projet
-Créer un site web dynamique en JavaScript, avec génération des éléments via le DOM, et actualisation du contenu des pages à l’aide d’API et de requêtes fetch.
+Créer un site dynamique conçu en PHP, structuré autour d’un système de front controller. Il intègre un en-tête (header) et un pied de page (footer) séparés, réutilisables sur toutes les pages grâce à include. Le site utilise la manipulation d’URL pour charger dynamiquement les contenus, et les données saisies dans un formulaire sont enregistrées dans un fichier .txt.
 ## Pages du site
 - **Catalogue** : 
 - **Contact** : 
