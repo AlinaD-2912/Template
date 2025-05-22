@@ -213,6 +213,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span class="error">* <?= $messageErr; ?></span><br>
         <textarea name="message" id="message"><?= htmlspecialchars($message) ?></textarea><br>
 
+        <label for="file">Vous pouvez ajouter le fichier</label><br>
+        <input id="file" type="file"><br><br>
+
         <input type="submit" value="Envoyer" />
 
     </form>
