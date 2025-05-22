@@ -1,3 +1,19 @@
 .error {
     color: #FF0000;
 }
+.img-phone {
+    width: auto;
+    height: 430px;
+    object-fit: cover;
+}
+.img-tablet{
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+    
+}
+.img-laptop{
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+}
