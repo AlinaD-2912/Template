@@ -1,5 +1,5 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : 'hobby'; // default page
+$page = isset($_GET['page']) ? $_GET['page'] : 'catalogue'; // default page
 
 // Set title and meta
 // if ($page == 'hobby') {
@@ -19,8 +19,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'hobby'; // default page
 // include('header.php');
 ?>
 <?php
-    if ($page == 'hobby') {
-        include 'hobby.php';
+    if ($page == 'catalogue') {
+        include 'catalogue.php';
     } elseif ($page == 'contact') {
         include 'contact.php';
     } elseif ($page == 'home') {
