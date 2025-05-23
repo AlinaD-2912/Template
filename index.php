@@ -23,8 +23,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'catalogue'; // default page
         include 'catalogue.php';
     } elseif ($page == 'contact') {
         include 'contact.php';
-    } elseif ($page == 'home') {
-        include 'index.php';
+    } elseif ($page == 'panier') {
+        include 'panier.php';
     } else {
         include '404.php';
     }
