@@ -19,15 +19,6 @@ include 'functions.php';
     </div>
 </main>
 
-<main>
-    <div class="container py-5">
-        <h1 class="text-center mb-5">Catalogue d'appareils (Tableau)</h1>
-            <?php afficherLesAppareilsDansUnTableau($products); ?>
-    </div>
-</main>
-
-
-
 <?php
 include 'footer.php';
 ?>

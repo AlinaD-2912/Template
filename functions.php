@@ -1,6 +1,7 @@
-<?php 
-function afficherLesAppareilsNormalement(array $products): void {
-  foreach ($products as $product): ?>
+<?php
+function afficherLesAppareilsNormalement(array $products): void
+{
+    foreach ($products as $product): ?>
         <div class="col">
             <div class="card h-100">
                 <img src="<?= htmlspecialchars($product['image']) ?>" class="card-img-top <?= htmlspecialchars($product['class']) ?>" alt="<?= htmlspecialchars($product['alt']) ?>">
@@ -17,32 +18,34 @@ function afficherLesAppareilsNormalement(array $products): void {
     <?php endforeach;
 }
 
-function afficherLesAppareilsDansUnTableau(array $products): void { ?>
-        <table class="table table-striped">
-            <thead>
+function afficherLesAppareilsPaniers(array $products): void
+{ ?>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($products as $product): ?>
                 <tr>
-                    <th>Image</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <td>
+                        <img src="<?= $product['image'] ?>"
+                            alt="<?= $product['alt'] ?>"
+                            style="max-width: 100px;">
+                    </td>
+                    <td><?= $product['title'] ?></td>
+                    <td><?= $product['description'] ?></td>
+                    <td><?= number_format($product['price'], 2) ?> €</td>
+                    <td>
+                        <input type="number" name="quantity[]" class="form-control" min="0" value="0">
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($products as $product): ?>
-                    <tr>
-                        <td>
-                            <img src="<?= $product['image']?>" 
-                                 alt="<?= $product['alt'] ?>"  
-                                 style="max-width: 100px;">
-                        </td>
-                        <td><?= $product['title'] ?></td>
-                        <td><?= $product['description'] ?></td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-primary">Acheter</a>
-                            <a href="index.php?page=contact" class="btn btn-sm btn-outline-secondary">Contacter</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 <?php }
