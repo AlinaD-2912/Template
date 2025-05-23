@@ -4,7 +4,8 @@
 Créer un site dynamique conçu en PHP, structuré autour d’un système de front controller. Il intègre un en-tête (header) et un pied de page (footer) séparés, réutilisables sur toutes les pages grâce à include. Le site utilise la manipulation d’URL pour charger dynamiquement les contenus, et les données saisies dans un formulaire sont enregistrées dans un fichier .txt.
 ## Pages du site
 - **Catalogue** : 
-- **Contact** : 
+- **Contact** :
+- **Panier** :
 ## Site en ligne
 [Accéder au site](https://template-php.kesug.com)
 ## Technologies utilisées
