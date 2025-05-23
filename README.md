@@ -6,7 +6,7 @@ Créer un site dynamique conçu en PHP, structuré autour d’un système de fro
 - **Catalogue** : 
 - **Contact** : 
 ## Site en ligne
-[Accéder au site](http://php-template.great-site.net)
+[Accéder au site](https://template-php.kesug.com)
 ## Technologies utilisées
 - PHP
 - CSS
