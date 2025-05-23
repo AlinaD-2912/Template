@@ -67,35 +67,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $email = htmlentities(trim($_POST['email']));
 //     $message = htmlentities(trim($_POST['message']));
 
-    // if (!filter_has_var(INPUT_POST, 'nom') || empty(trim($_POST["nom"]))) {
-    //     $nomErr = "Nom est requis";
-    // } else {
-    //     $nom = htmlentities(trim($_POST['nom']));
-    // }
+// if (!filter_has_var(INPUT_POST, 'nom') || empty(trim($_POST["nom"]))) {
+//     $nomErr = "Nom est requis";
+// } else {
+//     $nom = htmlentities(trim($_POST['nom']));
+// }
 
-    // if (!filter_has_var(INPUT_POST, 'prenom') || empty(trim($_POST["prenom"]))) {
-    //     $prenomErr = "Prénom est requis";
-    // } else {
-    //     $prenom = htmlentities(trim($_POST['prenom']));
-    // }
+// if (!filter_has_var(INPUT_POST, 'prenom') || empty(trim($_POST["prenom"]))) {
+//     $prenomErr = "Prénom est requis";
+// } else {
+//     $prenom = htmlentities(trim($_POST['prenom']));
+// }
 
-    // if (!filter_has_var(INPUT_POST, 'email') || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    //     $emailErr = "Format d'e-mail invalide";
-    // } else {
-    //     $email = htmlentities(trim($_POST["email"]));
-    // }
+// if (!filter_has_var(INPUT_POST, 'email') || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+//     $emailErr = "Format d'e-mail invalide";
+// } else {
+//     $email = htmlentities(trim($_POST["email"]));
+// }
 
-    // if (!filter_has_var(INPUT_POST, 'raison') || empty(trim($_POST["raison"]))) {
-    //     $raisonErr = "Raison est requise";
-    // } else {
-    //     $raison = $_POST["raison"];
-    // }
+// if (!filter_has_var(INPUT_POST, 'raison') || empty(trim($_POST["raison"]))) {
+//     $raisonErr = "Raison est requise";
+// } else {
+//     $raison = $_POST["raison"];
+// }
 
-    // if (!filter_has_var(INPUT_POST, 'message') || strlen(trim($_POST["message"])) < 5) {
-    //     $messageErr = "Le message doit contenir au moins 5 caractères";
-    // } else { 
-    //     $message = htmlentities(trim($_POST["message"]));
-    // }
+// if (!filter_has_var(INPUT_POST, 'message') || strlen(trim($_POST["message"])) < 5) {
+//     $messageErr = "Le message doit contenir au moins 5 caractères";
+// } else { 
+//     $message = htmlentities(trim($_POST["message"]));
+// }
 
 //      if (!$nomErr && !$prenomErr && !$emailErr && !$raisonErr && !$messageErr) {
 //         $data = "Civilité: $civilite\n";
@@ -168,57 +168,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="container my-5">
     <h1>Contactez-nous</h1>
-    <form action="index.php?page=contact" method="post">
+    <form action="index.php?page=contact" method="post" class="container mt-5 needs-validation" novalidate>
 
-        <label for="civilite">Choissisez votre civilité</label><br>
-        <select name="civilite" id="civilite">
-            <option value="madame" <?= ($civilite === 'madame') ? 'selected' : '' ?>>Madame</option>
-            <option value="monsieur" <?= ($civilite === 'monsieur') ? 'selected' : '' ?>>Monsieur</option>
-            <option value="rein" <?= ($civilite === 'rein') ? 'selected' : '' ?>>aucune de ces options</option>
-        </select>
-        <br>
+        <div class="mb-3">
+            <label for="civilite" class="form-label">Choisissez votre civilité</label>
+            <select name="civilite" id="civilite" class="form-select" required>
+                <option value="">Sélectionnez...</option>
+                <option value="madame" <?= ($civilite === 'madame') ? 'selected' : '' ?>>Madame</option>
+                <option value="monsieur" <?= ($civilite === 'monsieur') ? 'selected' : '' ?>>Monsieur</option>
+                <option value="rein" <?= ($civilite === 'rein') ? 'selected' : '' ?>>Aucune de ces options</option>
+            </select>
+        </div>
 
-        <label for="nom">Précisez votre nom</label>
-        <span class="error">* <?= $nomErr; ?></span><br>
-        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($nom) ?>"><br>
+        <div class="mb-3">
+            <label for="nom" class="form-label">Précisez votre nom</label>
+            <input type="text" id="nom" name="nom" class="form-control <?= !empty($nomErr) ? 'is-invalid' : '' ?>" value="<?= htmlspecialchars($nom) ?>">
+            <div class="invalid-feedback"><?= $nomErr; ?></div>
+        </div>
 
-        <label for="prenom">Précisez votre prénom</label>
-        <span class="error">* <?= $prenomErr; ?></span><br>
-        <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($prenom) ?>"><br>
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Précisez votre prénom</label>
+            <input type="text" id="prenom" name="prenom" class="form-control <?= !empty($prenomErr) ? 'is-invalid' : '' ?>" value="<?= htmlspecialchars($prenom) ?>">
+            <div class="invalid-feedback"><?= $prenomErr; ?></div>
+        </div>
 
-        <label for="email">Précisez votre email</label>
-        <span class="error">* <?= $emailErr; ?></span><br>
-        <input type="email" id="email" name="email" value="<?= htmlspecialchars($email) ?>"><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">Précisez votre email</label>
+            <input type="email" id="email" name="email" class="form-control <?= !empty($emailErr) ? 'is-invalid' : '' ?>" value="<?= htmlspecialchars($email) ?>">
+            <div class="invalid-feedback"><?= $emailErr; ?></div>
+        </div>
 
-        <fieldset>
-            <legend>En fonction du service dont vous avez besoin, choisissez-en un</legend>
-            <span class="error">* <?= $raisonErr; ?></span><br>
-
-            <div>
-                <input type="radio" id="serviceInfo" name="raison" value="serviceInfo" <?= ($raison === 'serviceInfo') ? 'checked' : '' ?> />
-                <label for="serviceInfo">Service informatique</label>
+        <fieldset class="mb-3">
+            <legend class="col-form-label pt-0">Choisissez un service</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="raison" id="serviceInfo" value="serviceInfo" <?= ($raison === 'serviceInfo') ? 'checked' : '' ?>>
+                <label class="form-check-label" for="serviceInfo">Service informatique</label>
             </div>
-            <div>
-                <input type="radio" id="hr" name="raison" value="hr" <?= ($raison === 'hr') ? 'checked' : '' ?> />
-                <label for="hr">Human Resources manager</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="raison" id="hr" value="hr" <?= ($raison === 'hr') ? 'checked' : '' ?>>
+                <label class="form-check-label" for="hr">Human Resources manager</label>
             </div>
-            <div>
-                <input type="radio" id="serviceTech" name="raison" value="serviceTech" <?= ($raison === 'serviceTech') ? 'checked' : '' ?> />
-                <label for="serviceTech">Service technique</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="raison" id="serviceTech" value="serviceTech" <?= ($raison === 'serviceTech') ? 'checked' : '' ?>>
+                <label class="form-check-label" for="serviceTech">Service technique</label>
             </div>
+            <?php if (!empty($raisonErr)): ?>
+                <div class="text-danger mt-1"><?= $raisonErr; ?></div>
+            <?php endif; ?>
         </fieldset>
 
+        <div class="mb-3">
+            <label for="message" class="form-label">Expliquez votre problème</label>
+            <textarea name="message" id="message" class="form-control <?= !empty($messageErr) ? 'is-invalid' : '' ?>" rows="4"><?= htmlspecialchars($message) ?></textarea>
+            <div class="invalid-feedback"><?= $messageErr; ?></div>
+        </div>
 
-        <label for="message">Donnez une courte explication de votre problème</label>
-        <span class="error">* <?= $messageErr; ?></span><br>
-        <textarea name="message" id="message"><?= htmlspecialchars($message) ?></textarea><br>
+        <div class="mb-4">
+            <label for="file" class="form-label">Ajoutez un fichier (facultatif)</label>
+            <input class="form-control" type="file" id="file" name="file">
+        </div>
 
-        <label for="file">Vous pouvez ajouter le fichier</label><br>
-        <input id="file" type="file"><br><br>
-
-        <input type="submit" value="Envoyer" />
+        <button type="submit" class="btn btn-primary">Envoyer</button>
 
     </form>
+
 </main>
 
 <?php include('footer.php'); ?>
