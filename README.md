@@ -1,11 +1,22 @@
-# Création d'un template                                
+# 🖥️ Template PHP – Site de vente de produits tech    
+Un projet PHP éducatif qui simule un site de vente de produits technologiques (smartphones, laptops, écrans). L'objectif principal était d’apprendre à manipuler dynamiquement des objets et des pages à l’aide d’un système de front controller.
 **Template Php** 
 ## Objectif du projet
-Créer un site dynamique conçu en PHP, structuré autour d’un système de front controller. Il intègre un en-tête (header) et un pied de page (footer) séparés, réutilisables sur toutes les pages grâce à include. Le site utilise la manipulation d’URL pour charger dynamiquement les contenus, et les données saisies dans un formulaire sont enregistrées dans un fichier .txt.
+Ce projet a été réalisé dans un cadre d’apprentissage pour mettre en œuvre :
+
+- Un front controller pour centraliser le routage des pages via les URL.
+
+- La réutilisation d’un header et d’un footer sur toutes les pages via include.
+
+- Le chargement dynamique de contenus à partir de données objet (produits) en PHP.
+
+- Un formulaire de contact dont les données sont enregistrées dans un fichier .txt.
+
+Le site simule une boutique de produits tech sans base de données.
 ## Pages du site
-- **Catalogue** : 
-- **Contact** :
-- **Panier** :
+- **Catalogue** : Affiche une liste dynamique d’objets produits (ex. téléphones, laptops). Chaque produit a un nom, une description, un prix et une quantité. Les objets sont manipulés directement en PHP.
+- **Contact** : Formulaire permettant aux visiteurs de contacter l’entreprise. Les données saisies sont enregistrées dans un fichier texte (messages.txt), illustrant la gestion de formulaires en PHP.
+- **Panier** : Panier simple utilisant les sessions PHP. L'utilisateur peut ajouter/modifier des produits au panier à partir du catalogue.
 ## Site en ligne
 [Accéder au site](https://template-php.kesug.com)
 ## Technologies utilisées
